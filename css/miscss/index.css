@@ -1,0 +1,119 @@
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+
+/*---Media Queries --*/
+@media (max-width: 331px) {
+
+  .imagenportada{
+    margin-top: 70%;
+    margin-bottom: -10%;
+  }
+
+
+}
+@media (max-width: 991px) {
+
+  
+  
+  
+}
+
+@media only screen and (max-width: 991px) { 
+
+  .imagenportada{
+    margin-top: 5%;
+    margin-bottom: -10%;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+ 
+
+  .imagenportada{
+    margin-top: 5%;
+    margin-bottom: -30%;
+  }
+
+  
+
+}
+.principal{
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  
+  min-height: 100vh;
+}
+
+.imagenportada{
+  height: 100%;
+  
+}
+
+.image{
+  width: 95%;
+  height:100% ;
+  margin-left: 5%;
+}
+
+
+
+.form-field {
+  height: 46px;
+  padding: 0 16px;
+  border: 2px solid rgb(10, 10, 10);
+  border-radius: 4px;
+  font-family: 'Rubik', sans-serif;
+  outline: 0;
+
+  margin-top: 20px;
+  text-align: center;
+  align-items: center;
+}
+
+.form-field:focus {
+  border-color: #0f7ef1;
+}
+
+
+h1{
+  font-size: 90px;
+  text-align: center;
+
+ 
+}
+.button {
+  width: 220px;
+
+  height: 46px;
+  padding: 0 16px;
+  border: 2px solid #ddd;
+  background: linear-gradient(to right, #070707 0%,#070707 100%); 
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Rubik', sans-serif;
+}
