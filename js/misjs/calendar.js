@@ -154,11 +154,8 @@ function consultarhorario(i, e){
          fila=document.getElementById("fila"+i);
          celda=fila.getElementsByTagName("td")[e];
          var array = tit.textContent.split(" ")
-
-         
          alert( array[0] + " " + celda.textContent)
-      
-       
+ 
       }
       
    }
