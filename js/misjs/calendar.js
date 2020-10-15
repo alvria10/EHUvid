@@ -32,7 +32,7 @@ escribirdias()
 //FUNCIONES de creación del calendario:
 //cabecera del calendario
 function cabecera() {
-         tit.innerHTML=meses[mescal]+" de "+annocal;
+         tit.innerHTML=meses[mescal]
          mesant=mescal-1; //mes anterior
          mespos=mescal+1; //mes posterior
          if (mesant<0) {mesant=11;}
@@ -70,7 +70,7 @@ function escribirdias() {
                  celda=fila.getElementsByTagName("td")[j];
                  celda.innerHTML=midia;
                  //Recuperar estado inicial al cambiar de mes:
-                 celda.style.backgroundColor="#645D5B";
+                 celda.style.backgroundColor="#30302D";
                  celda.style.color="#F1F1F0";
                  //domingos en rojo
                  if (j==6) { 
@@ -78,12 +78,13 @@ function escribirdias() {
                     }
                  //dias restantes del mes en gris
                  if (mimes!=mescal) { 
-                    celda.style.color="#645D5B";
-                    celda.innerHTML="33"
+                    celda.style.color="#30302D";
+                    celda.innerHTML=""
                     }
                  //destacar la fecha actual
                  if (mimes==meshoy && midia==diahoy && mianno==annohoy ) { 
-                    celda.style.backgroundColor="#f0b19e";
+                    celda.style.backgroundColor="#FFFFFF ";
+                    celda.style.color="#30302D ";
                     celda.innerHTML="<cite title='Fecha Actual'>"+midia+"</cite>";
                     }
                  //pasar al siguiente día
@@ -165,7 +166,8 @@ function notmesanterior(i,e){
   
    fila=document.getElementById("fila"+i);
    celda=fila.getElementsByTagName("td")[e].textContent;
-   if (celda == 33) return false;
+   saltar = "";
+   if (celda == saltar) return false;
    else return true;
  
 }

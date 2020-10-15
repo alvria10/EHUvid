@@ -4,9 +4,9 @@
 
 #calendario {
  
-  max-width: 536px; 
+  
   text-align: center; 
-  width: 100%;
+
   
 }
 
@@ -18,19 +18,18 @@
 
 #diasc th,#diasc td { 
   font: normal 14pt arial; 
-  width: 70px; 
-  height: 30px; 
+  width: 10vh; 
+  height: 6vh; 
 }
 
 #diasc th { 
   color: aliceblue;
-  background-color: #2D2C2C ; 
+  background-color: #181816 ; 
  
 }
 
 #diasc td { 
-  color: #492736; 
-  background-color: gray;
+ 
 }
 
 /*línea de la fecha actual*/
