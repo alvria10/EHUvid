@@ -1,0 +1,91 @@
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+
+/*---Media Queries --*/
+@media (max-width: 331px) {
+
+  .imagenportada{
+    margin-top: 70%;
+    margin-bottom: -10%;
+  }
+
+
+}
+@media (max-width: 991px) {
+
+  
+  
+  
+}
+
+@media only screen and (max-width: 991px) { 
+
+  .imagenportada{
+    margin-top: 5%;
+    margin-bottom: -10%;
+  }
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+ 
+
+  .imagenportada{
+    margin-top: 5%;
+    margin-bottom: -30%;
+  }
+
+  
+
+}
+
+/*Div Principal*/
+body{
+    height: 90vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.principal{
+  height: 100%;
+  width: 100%;
+}
+
+/*Zona alumnado*/
+
+.alumnado{
+  margin-left: 5%;
+
+}
+/*Estado*/
+/*Consultar clases*/
+
+
+/*Notificaciones*/
+
+.notificaciones{
+  height: 20vh;
+  border-color: gray;
+  border-width: 1px;
+  border-style: solid;
+}
