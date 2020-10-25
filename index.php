@@ -1,3 +1,6 @@
+<?php session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,9 +51,9 @@
 
             <div class="col-lg-12 divform d-flex align-items-center justify-content-center">
               
-              <form class="formulario text-center align-items-center justify-content-center " action="/action_page.php">
-                <input type="text" class="form-field " placeholder="LDAPP">
-                <input type="password" class="form-field " placeholder="Contraseña">
+              <form class="formulario text-center align-items-center justify-content-center " action="index.php" method="post">
+                <input type="text" class="form-field " placeholder="LDAP" name="ldap" id="ldap">
+                <input type="password" class="form-field " placeholder="Contraseña" name="contrasena" id="contrasena">
                 <button class="button ">LOGIN</button>
               </form>
             </div>
@@ -82,6 +85,38 @@
 
             <!--===============================================================================================-->
         <!--===============================================================================================-->
+
+      <?php
+        include 'conexion.php';
+        $conn = OpenCon();
+        //echo "Connected Successfully <hr>";
+
+        if($_POST){
+          $ldap = $_POST['LDAP'];
+          $_SESSION['ldap'] = $ldap;
+          $contrasena = $_POST['contrasena'];
+
+          //echo "Email: " . $email . "<hr>" ;
+          //echo "Contraseña: " . $contrasena . "<hr>" ;
+
+          $contrasena_json=mysqli_query($conn,"SELECT contrasena FROM usuarios WHERE ldap='$ldap'");
+          $check_ldap=mysqli_num_rows($contrasena_json);
+          $row = mysqli_fetch_assoc($contrasena_json);
+          //print_r ($row);
+          $contrasena_str = $row['contrasena'];
+
+          echo $contrasena_str;
+          if($check_mail==0){
+            echo ' <script language="javascript">alert("El ldap no está asociado a ninguna cuenta.");</script> ';
+          }else{
+            if($contrasena_str!=$contrasena){
+              echo ' <script language="javascript">alert("La contraseña es incorrecta."); </script> ';
+            }else{
+              header('Location: information.php');
+            }
+          }
+        }
+      ?>
     
     </body>
 </html>
