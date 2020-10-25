@@ -89,15 +89,15 @@
       <?php
         include 'conexion.php';
         $conn = OpenCon();
-        //echo "Connected Successfully <hr>";
+        echo "Connected Successfully <hr>";
 
         if($_POST){
-          $ldap = $_POST['LDAP'];
+          $ldap = $_POST['ldap'];
           $_SESSION['ldap'] = $ldap;
           $contrasena = $_POST['contrasena'];
 
-          //echo "Email: " . $email . "<hr>" ;
-          //echo "Contraseña: " . $contrasena . "<hr>" ;
+          echo "LDAP: " . $ldap . "<hr>" ;
+          echo "Contraseña: " . $contrasena . "<hr>" ;
 
           $contrasena_json=mysqli_query($conn,"SELECT contrasena FROM usuarios WHERE ldap='$ldap'");
           $check_ldap=mysqli_num_rows($contrasena_json);
@@ -106,13 +106,14 @@
           $contrasena_str = $row['contrasena'];
 
           echo $contrasena_str;
-          if($check_mail==0){
+          if($check_ldap==0){
             echo ' <script language="javascript">alert("El ldap no está asociado a ninguna cuenta.");</script> ';
           }else{
             if($contrasena_str!=$contrasena){
               echo ' <script language="javascript">alert("La contraseña es incorrecta."); </script> ';
             }else{
               header('Location: information.php');
+              exit();
             }
           }
         }

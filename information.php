@@ -1,3 +1,24 @@
+<?php session_start();
+    include 'conexion.php';
+    $conn = OpenCon();
+    echo "Connected Successfully <hr>";
+    $ldap = $_SESSION['ldap'];
+    echo $ldap;
+    $sql = "SELECT (estado, nombre, apellidos) FROM usuarios WHERE ldap='$ldap'";
+    $row = $conn->query($sql);
+    echo "<br>";
+    echo $row;
+    $estado = $row[0] ?? 'default value';
+    $nombre = $row[1] ?? 'default value';
+    $apellidos = $row[2] ?? 'default value';
+    echo "<br>id: ";
+    echo $estado;
+    echo "<br>nombre: ";
+    echo $nombre;
+    echo "<br>apellidos: ";
+    echo $apellidos;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -132,6 +153,8 @@
 
             <!--===============================================================================================-->
         <!--===============================================================================================-->
+
+
 
     </body>
 </html>
