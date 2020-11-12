@@ -4,19 +4,23 @@
     echo "Connected Successfully <hr>";
     $ldap = $_SESSION['ldap'];
     echo $ldap;
-    $sql = "SELECT (estado, nombre, apellidos) FROM usuarios WHERE ldap='$ldap'";
-    $row = $conn->query($sql);
+    $row = mysqli_query($conn,"SELECT estado, nombre, apellidos FROM usuarios WHERE ldap='$ldap'");
+    $consulta=mysqli_fetch_array($row);
     echo "<br>";
-    echo $row;
-    $estado = $row[0] ?? 'default value';
-    $nombre = $row[1] ?? 'default value';
-    $apellidos = $row[2] ?? 'default value';
-    echo "<br>id: ";
-    echo $estado;
-    echo "<br>nombre: ";
-    echo $nombre;
-    echo "<br>apellidos: ";
-    echo $apellidos;
+    if($row!=null){
+        #echo $row;
+        $estado = $consulta[0] ?? 'default value';
+        $nombre = $consulta[1] ?? 'default value';
+        $apellidos = $consulta[2] ?? 'default value';
+        echo "<br>id: ";
+        echo $estado;
+        echo "<br>nombre: ";
+        echo $nombre;
+        echo "<br>apellidos: ";
+        echo $apellidos;
+    }else{
+        echo "MAL ";
+    }
 ?>
 
 <!DOCTYPE html>
