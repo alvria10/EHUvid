@@ -4,30 +4,38 @@ lasemana=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
 diassemana=["lun","mar","mié","jue","vie","sáb","dom"];
 //Tras cargarse la página ...
 window.onload = function() {
-//fecha actual
-hoy=new Date(); //objeto fecha actual
-diasemhoy=hoy.getDay(); //dia semana actual
-diahoy=hoy.getDate(); //dia mes actual
-meshoy=hoy.getMonth(); //mes actual
-annohoy=hoy.getFullYear(); //año actual
-// Elementos del DOM: en cabecera de calendario 
-tit=document.getElementById("titulos"); //cabecera del calendario
-ant=document.getElementById("anterior"); //mes anterior
-pos=document.getElementById("posterior"); //mes posterior
-// Elementos del DOM en primera fila
-f0=document.getElementById("fila0");
-//Pie de calendario
-pie=document.getElementById("fechaactual");
-pie.innerHTML+=lasemana[diasemhoy]+", "+diahoy+" de "+meses[meshoy]+" de "+annohoy;
-//formulario: datos iniciales:
-document.buscar.buscaanno.value=annohoy;
-// Definir elementos iniciales:
-mescal = meshoy; //mes principal
-annocal = annohoy //año principal
-//iniciar calendario:
-cabecera() 
-primeralinea()
-escribirdias()
+    //fecha actual
+    hoy=new Date(); //objeto fecha actual
+    diasemhoy=hoy.getDay(); //dia semana actual
+    diahoy=hoy.getDate(); //dia mes actual
+    meshoy=hoy.getMonth(); //mes actual
+    annohoy=hoy.getFullYear(); //año actual
+
+    // Elementos del DOM: en cabecera de calendario
+    tit=document.getElementById("titulos"); //cabecera del calendario
+    ant=document.getElementById("anterior"); //mes anterior
+    pos=document.getElementById("posterior"); //mes posterior
+
+    // Elementos del DOM en primera fila
+    f0=document.getElementById("fila0");
+
+    //Pie de calendario
+    pie=document.getElementById("fechaactual");
+    pie.innerHTML+=lasemana[diasemhoy]+", "+diahoy+" de "+meses[meshoy]+" de "+annohoy;
+
+    //formulario: datos iniciales:
+    document.buscar.buscaanno.value=annohoy;
+
+    // Definir elementos iniciales:
+    mescal = meshoy; //mes principal
+    annocal = annohoy //año principal
+
+    //iniciar calendario:
+    cabecera()
+    primeralinea()
+    escribirdias()
+
+
 }
 //FUNCIONES de creación del calendario:
 //cabecera del calendario
@@ -36,9 +44,11 @@ function cabecera() {
          mesant=mescal-1; //mes anterior
          mespos=mescal+1; //mes posterior
          if (mesant<0) {mesant=11;}
-         if (mespos>11) {mespos=0;}
-         ant.innerHTML=meses[mesant]
-         pos.innerHTML=meses[mespos]
+             if (mespos>11) {
+                 mespos=0;
+             }
+             ant.innerHTML=meses[mesant]
+             pos.innerHTML=meses[mespos]
          } 
 //primera línea de tabla: días de la semana.
 function primeralinea() {
@@ -151,14 +161,13 @@ function consultarhorario(i, e){
    if(e<5){
 
       if(notmesanterior(i,e)){
-
-         fila=document.getElementById("fila"+i);
-         celda=fila.getElementsByTagName("td")[e];
-         var array = tit.textContent.split(" ")
-         alert( array[0] + " " + celda.textContent)
+         celda=diassemana[e];
+         alert(celda)
  
       }
       
+   } else {
+       alert("No hay clase el día seleccionado")
    }
 }
 

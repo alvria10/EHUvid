@@ -1,23 +1,18 @@
 <?php session_start();
     include 'conexion.php';
     $conn = OpenCon();
-    echo "Connected Successfully <hr>";
+    #echo "Connected Successfully <hr>";
     $ldap = $_SESSION['ldap'];
-    echo $ldap;
+    #echo $ldap;
     $row = mysqli_query($conn,"SELECT estado, nombre, apellidos FROM usuarios WHERE ldap='$ldap'");
     $consulta=mysqli_fetch_array($row);
-    echo "<br>";
+    #echo "<br>";
     if($row!=null){
-        #echo $row;
         $estado = $consulta[0] ?? 'default value';
         $nombre = $consulta[1] ?? 'default value';
         $apellidos = $consulta[2] ?? 'default value';
-        echo "<br>id: ";
-        echo $estado;
-        echo "<br>nombre: ";
-        echo $nombre;
-        echo "<br>apellidos: ";
-        echo $apellidos;
+        $espacio = " ";
+        $nombreyapellidos = $nombre . $espacio . $apellidos;
     }else{
         echo "MAL ";
     }
@@ -60,8 +55,9 @@
 
         <!--Nombre y apellidos-->
         <div class="col-lg-5 row d-flex align-items-center nombre ">
-          <h1 class="datos">Nombre y apellidos</h1>
-        
+          <h1 class="datos" id="nombre">
+            <?php echo $nombreyapellidos; ?>
+          </h1>
         </div>
 
 
@@ -71,8 +67,8 @@
           <!--estado-->
           <div class="col-lg-5 row d-flex  justify-content-center informacion">
             <div class="col-lg-12 row d-flex estado">
-              <h3 class="datos">Estado:</h3>
-              <h3 class="datos">Positivo</h3>
+              <h3 class="datos">Estado: </h3>
+              <h3 class="datos"><?php echo $estado; ?></h3>
 
             </div>
 
