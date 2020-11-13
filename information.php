@@ -16,6 +16,8 @@
     }else{
         echo "MAL ";
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +43,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="https://use.fontawesome.com/aaa4b89a6a.js"></script>
         <script src="js/misjs/calendar.js"></script>
-
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
 
         
     </head>
@@ -111,7 +113,8 @@
               <div id="fechaactual"><i onclick="actualizar()"> </i></div>
               <div id="buscafecha">
                 <form action="#" name="buscar">
-                  <p>
+                  <p>+
+
                     <select name="buscames">
                       <option value="0">Enero</option>
                       <option value="1">Febrero</option>
@@ -150,8 +153,39 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>  
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function consultarhorario(semana, diaSemana){
 
-            <!--===============================================================================================-->
+                  if(notmesanterior(semana, diaSemana)){
+                      // celda=diassemana[e];
+                      // var miVariableJS=$("select * from usuarios").val();
+
+                      // Enviamos la variable de javascript a archivo.php
+                      // $.post("consultaHorario.php",{"texto":miVariableJS},function(respuesta){
+                      //     alert(respuesta);
+                      // });
+                      if(diaSemana<5){
+
+                          if(notmesanterior(semana, diaSemana)){
+
+                             fila = document.getElementById("fila" + semana);
+                             celda=fila.getElementsByTagName("td")[diaSemana];
+                             var array = tit.textContent.split(" ");
+                             mes = meses.indexOf(array[0]) + 1;
+                             dia = celda.textContent;
+                             if (mes > 0){
+                                alert(array[0] + " " + dia);
+                             }
+                          }
+                      }
+                  }
+               else {
+                   alert("No hay clase el día seleccionado")
+               }
+            }
+        </script>
+
+        <!--===============================================================================================-->
         <!--===============================================================================================-->
 
 

@@ -102,7 +102,6 @@
           $contrasena_json=mysqli_query($conn,"SELECT contrasena FROM usuarios WHERE ldap='$ldap'");
           $check_ldap=mysqli_num_rows($contrasena_json);
           $row = mysqli_fetch_assoc($contrasena_json);
-          //print_r ($row);
           $contrasena_str = $row['contrasena'];
 
           echo $contrasena_str;

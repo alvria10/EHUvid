@@ -156,20 +156,7 @@ function mifecha() {
               }
          }
 
-function consultarhorario(i, e){
 
-   if(e<5){
-
-      if(notmesanterior(i,e)){
-         celda=diassemana[e];
-         alert(celda)
- 
-      }
-      
-   } else {
-       alert("No hay clase el día seleccionado")
-   }
-}
 
 function notmesanterior(i,e){
   
