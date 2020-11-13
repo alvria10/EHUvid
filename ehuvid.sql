@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2020 a las 14:30:41
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.11
+-- Tiempo de generación: 13-11-2020 a las 16:05:36
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -67,11 +68,18 @@ CREATE TABLE `notificacionfecha` (
 
 CREATE TABLE `usuarios` (
   `ldap` varchar(20) NOT NULL,
-  `contraseña` varchar(20) NOT NULL,
+  `contrasena` varchar(20) NOT NULL,
   `estado` varchar(15) NOT NULL,
   `nombre` varchar(15) NOT NULL,
   `apellidos` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`ldap`, `contrasena`, `estado`, `nombre`, `apellidos`) VALUES
+('700497', '1234', 'negativo', 'diego', 'vesga');
 
 -- --------------------------------------------------------
 
