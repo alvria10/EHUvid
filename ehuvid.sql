@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2020 a las 16:05:36
+-- Tiempo de generación: 13-11-2020 a las 17:35:04
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -43,7 +43,8 @@ CREATE TABLE `asignatura` (
 
 CREATE TABLE `horaydia` (
   `dia` date NOT NULL,
-  `hora` time NOT NULL,
+  `horaInicio` time NOT NULL,
+  `horaFin` time NOT NULL,
   `codigoasignatura` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,7 +107,7 @@ ALTER TABLE `asignatura`
 -- Indices de la tabla `horaydia`
 --
 ALTER TABLE `horaydia`
-  ADD PRIMARY KEY (`dia`,`hora`,`codigoasignatura`);
+  ADD PRIMARY KEY (`dia`,`horaInicio`,`codigoasignatura`);
 
 --
 -- Indices de la tabla `usuarios`
