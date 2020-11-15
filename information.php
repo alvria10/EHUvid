@@ -55,7 +55,8 @@
 	  
 	  <!--Cerrar sesion-->
 	  <div style='text-align:right'>
-		<br><a href="logout.php">Cerrar Sesión</a>
+		<br>
+		<button class="button "><a href="logout.php">Cerrar Sesión</a></button>
 	  </div>
 	  	  
       <div class="principal row d-flex ">
