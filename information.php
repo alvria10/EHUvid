@@ -52,16 +52,21 @@
 
 
       <!--div principal-->
+	  
+	  <!--Cerrar sesion-->
+	  <div style='text-align:right'>
+		<br><a href="logout.php">Cerrar Sesión</a>
+	  </div>
+	  	  
       <div class="principal row d-flex ">
-
 
         <!--Nombre y apellidos-->
         <div class="col-lg-5 row d-flex align-items-center nombre ">
           <h1 class="datos" id="nombre">
-            <?php echo $nombreyapellidos; ?>
+            <?php echo $nombreyapellidos; ?>	
           </h1>
         </div>
-
+		
 
          <!--Zona alumnado-->
         <div class="col-lg-12 row d-flex align-items-center justify-content-center alumnado">
@@ -89,6 +94,7 @@
               <h3 class="datos">Koldo ha cancelado sus clases</h3>
 
             </div>
+			
           </div>
 
 
