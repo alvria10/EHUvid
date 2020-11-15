@@ -52,22 +52,22 @@
 
 
       <!--div principal-->
-	  
+
 	  <!--Cerrar sesion-->
 	  <div style='text-align:right'>
 		<br>
 		<button class="button "><a href="logout.php">Cerrar Sesión</a></button>
 	  </div>
-	  	  
+
       <div class="principal row d-flex ">
 
         <!--Nombre y apellidos-->
         <div class="col-lg-5 row d-flex align-items-center nombre ">
           <h1 class="datos" id="nombre">
-            <?php echo $nombreyapellidos; ?>	
+            <?php echo $nombreyapellidos; ?>
           </h1>
         </div>
-		
+
 
          <!--Zona alumnado-->
         <div class="col-lg-12 row d-flex align-items-center justify-content-center alumnado">
@@ -95,7 +95,7 @@
               <h3 class="datos">Koldo ha cancelado sus clases</h3>
 
             </div>
-			
+
           </div>
 
 
@@ -109,13 +109,13 @@
               <h2 id="titulos"></h2>
               <table id="diasc">
                  <!--Dias de la semana-->
-                <tr class="emergente0" id="fila0"><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
-                <tr class="emergente1" id="fila1"><td  onclick="consultarhorario(1,0)"></td><td onclick="consultarhorario(1,1)"></td><td onclick="consultarhorario(1,2)"></td><td onclick="consultarhorario(1,3)"></td><td onclick="consultarhorario(1,4)"></td><td></td><td></td></tr>
-                <tr class="emergente2" id="fila2"><td onclick="consultarhorario(2,0)"></td><td onclick="consultarhorario(2,1)"></td><td onclick="consultarhorario(2,2)"></td><td onclick="consultarhorario(2,3)"></td><td onclick="consultarhorario(2,4)"></td><td ></td><td ></td></tr>
-                <tr class="emergente3" id="fila3"><td onclick="consultarhorario(3,0)"></td><td onclick="consultarhorario(3,1)"></td><td onclick="consultarhorario(3,2)"></td><td onclick="consultarhorario(3,3)"></td><td onclick="consultarhorario(3,4)"></td><td ></td><td ></td></tr>
-                <tr class="emergente4" id="fila4"><td onclick="consultarhorario(4,0)"></td><td onclick="consultarhorario(4,1)"></td><td onclick="consultarhorario(4,2)"></td><td onclick="consultarhorario(4,3)"></td><td onclick="consultarhorario(4,4)"></td><td ></td><td ></td></tr>
-                <tr class="emergente5" id="fila5"><td onclick="consultarhorario(5,0)"></td><td onclick="consultarhorario(5,1)"></td><td onclick="consultarhorario(5,2)"></td><td onclick="consultarhorario(5,3)"></td><td onclick="consultarhorario(5,4)"></td><td></td><td ></td></tr>
-                <tr class="emergente6" id="fila6"><td onclick="consultarhorario(6,0)"></td><td onclick="consultarhorario(6,1)"></td><td onclick="consultarhorario(6,2)"></td><td onclick="consultarhorario(6,3)"></td><td onclick="consultarhorario(6,4)"></td><td ></td><td></td></tr>
+                <tr  id="fila0"><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+                <tr  id="fila1"><td class="emergente1" onclick="consultarhorario(1,0)"></td><td class="emergente1" onclick="consultarhorario(1,1)"></td><td class="emergente1" onclick="consultarhorario(1,2)"></td><td class="emergente1" onclick="consultarhorario(1,3)"></td><td class="emergente1" onclick="consultarhorario(1,4)"></td><td></td><td></td></tr>
+                <tr  id="fila2"><td class="emergente2" onclick="consultarhorario(2,0)"></td><td class="emergente2" onclick="consultarhorario(2,1)"></td><td class="emergente2" onclick="consultarhorario(2,2)"></td><td class="emergente2" onclick="consultarhorario(2,3)"></td><td class="emergente2" onclick="consultarhorario(2,4)"></td><td ></td><td ></td></tr>
+                <tr  id="fila3"><td class="emergente3" onclick="consultarhorario(3,0)"></td><td class="emergente3" onclick="consultarhorario(3,1)"></td><td class="emergente3" onclick="consultarhorario(3,2)"></td><td class="emergente3" onclick="consultarhorario(3,3)"></td><td class="emergente3" onclick="consultarhorario(3,4)"></td><td ></td><td ></td></tr>
+                <tr  id="fila4"><td class="emergente4" onclick="consultarhorario(4,0)"></td><td class="emergente4" onclick="consultarhorario(4,1)"></td><td class="emergente4" onclick="consultarhorario(4,2)"></td><td class="emergente4" onclick="consultarhorario(4,3)"></td><td class="emergente4" onclick="consultarhorario(4,4)"></td><td ></td><td ></td></tr>
+                <tr  id="fila5"><td class="emergente5" onclick="consultarhorario(5,0)"></td><td class="emergente5" onclick="consultarhorario(5,1)"></td><td class="emergente5" onclick="consultarhorario(5,2)"></td><td class="emergente5" onclick="consultarhorario(5,3)"></td><td class="emergente5" onclick="consultarhorario(5,4)"></td><td></td><td ></td></tr>
+                <tr  id="fila6"><td class="emergente6" onclick="consultarhorario(6,0)"></td><td class="emergente6" onclick="consultarhorario(6,1)"></td><td class="emergente6" onclick="consultarhorario(6,2)"></td><td class="emergente6" onclick="consultarhorario(6,3)"></td><td class="emergente6" onclick="consultarhorario(6,4)"></td><td ></td><td></td></tr>
               </table>
               <div id="fechaactual"><i onclick="actualizar()"> </i></div>
               <div id="buscafecha">
@@ -190,7 +190,10 @@
                       // $.post("consultaHorario.php",{"texto":miVariableJS},function(respuesta){
                       //     alert(respuesta);
                       // });
-                      if(diaSemana<=4){
+
+
+
+                      if(diaSemana<5){
 
                           if(notmesanterior(semana, diaSemana)){
 
@@ -203,20 +206,23 @@
                              //Para que aparezca la ventana emergente con el horario
                             $(".emergente" + semana).attr("data-toggle" , "modal");
                             $(".emergente" + semana).attr("data-target" , "#exampleModal");
+
                             div = document.getElementById('horario');
                             div.classList.add('d-flex', 'align-items-center', 'justify-content-center');
                             div.innerHTML = "";
+
+
 
                             //lunes
                             if(diaSemana == 0){
                               document.getElementById("horario").innerHTML = "<div> 13:00 - 15:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 15:00 - 17:00 &nbsp;  TIA &nbsp; ONLINE</div>";
                             }
-							//martes
-							if(diaSemana == 1){
+							              //martes
+              							if(diaSemana == 1){
                               document.getElementById("horario").innerHTML = "<div> 15:00 - 17:00 &nbsp;  AS &nbsp;  PRESENCIAL &nbsp; <br> 17:00 - 19:00 &nbsp;  PLCs &nbsp; ONLINE</div>";
                             }
-							//miercoles
-							if(diaSemana == 2){
+							              //miercoles
+							              if(diaSemana == 2){
                               document.getElementById("horario").innerHTML = "<div> 14:00 - 16:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 16:00 - 18:00 &nbsp;  PLCs &nbsp; PRESENCIAL &nbsp; <br> 18:00 - 20:00 &nbsp;  AS &nbsp; ONLINE</div>";
                             }
                           }
