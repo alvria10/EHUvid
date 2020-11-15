@@ -37,6 +37,8 @@
          <link rel="stylesheet" href="css/miscss/information.css">
          <link rel="stylesheet" href="css/miscss/menu.css">
 
+         <link rel=”icon” href=”img/logoEhu.png”>
+
 
          <link href="https://allfont.es/allfont.css?fonts=alien-league" rel="stylesheet" type="text/css" />
 
@@ -190,8 +192,6 @@
                       // $.post("consultaHorario.php",{"texto":miVariableJS},function(respuesta){
                       //     alert(respuesta);
                       // });
-
-
 
                       if(diaSemana<5){
 
