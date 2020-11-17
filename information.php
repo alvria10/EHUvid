@@ -203,9 +203,6 @@
             <div class="modal-body" id="horario">
 
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
-            </div>
           </div>
         </div>
     </div>
@@ -253,12 +250,21 @@
                              if(diaSemana == 0){
                                 document.getElementById("horario").innerHTML = "<div> 13:00 - 15:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 15:00 - 17:00 &nbsp;  TIA &nbsp; ONLINE</div>";
                              }
-							 //martes
-							 if(diaSemana == 1){
+                            //martes
+                              if(diaSemana == 1){
                                 document.getElementById("horario").innerHTML = "<div> 15:00 - 17:00 &nbsp;  AS &nbsp;  PRESENCIAL &nbsp; <br> 17:00 - 19:00 &nbsp;  PLCs &nbsp; ONLINE</div>";
                              }
-							 //miercoles
-							 if(diaSemana == 2){
+                              //miercoles
+                              if(diaSemana == 2){
+                                document.getElementById("horario").innerHTML = "<div> 14:00 - 16:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 16:00 - 18:00 &nbsp;  PLCs &nbsp; PRESENCIAL &nbsp; <br> 18:00 - 20:00 &nbsp;  AS &nbsp; ONLINE</div>";
+                             }
+                             //lunes
+                             if(diaSemana == 3){
+                                document.getElementById("horario").innerHTML = "<div> 13:00 - 15:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 15:00 - 17:00 &nbsp;  TIA &nbsp; ONLINE</div>";
+                             }
+                            
+                              //miercoles
+                              if(diaSemana == 4){
                                 document.getElementById("horario").innerHTML = "<div> 14:00 - 16:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 16:00 - 18:00 &nbsp;  PLCs &nbsp; PRESENCIAL &nbsp; <br> 18:00 - 20:00 &nbsp;  AS &nbsp; ONLINE</div>";
                              }
                           }
