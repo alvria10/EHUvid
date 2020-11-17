@@ -111,7 +111,11 @@
             if($contrasena_str!=$contrasena){
               echo ' <script language="javascript">alert("La contraseña es incorrecta."); </script> ';
             }else{
-              header('Location: information.php');
+              if ($ldap == '111111'){
+                header('Location: admin.php');
+              } else {
+                header('Location: information.php');
+              }
               exit();
             }
           }

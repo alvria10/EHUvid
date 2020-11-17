@@ -14,11 +14,12 @@
         echo "MAL ";
     }
 
-    $row = mysqli_query($conn,"SELECT mensaje, C.nombre FROM notificacionfecha as A NATURAL JOIN usuarioyasignatura as B INNER JOIN asignatura as C ON B.codigoasignatura = C.codigo WHERE ldap = '$ldap' AND YEARWEEK(fecha,1)=YEARWEEK(NOW(),1)");
-    //$consulta = mysqli_fetch_array($row);
-
+    $row = mysqli_query($conn,"SELECT mensaje, C.nombre FROM
+     notificacionfecha as A NATURAL JOIN usuarioyasignatura as B
+     INNER JOIN asignatura as C ON B.codigoasignatura = C.codigo
+     WHERE ldap = '$ldap' AND YEARWEEK(fecha,1)=YEARWEEK(NOW(),1)");
     $hayResultados = true;
-
+    $notificaciones = "";
     while($hayResultados == true){
         $fila = mysqli_fetch_array($row);
         if ($fila){
@@ -126,10 +127,6 @@
               <h3 class="datos"><?php echo $estado; ?></h3>
 
             </div>
-
-             <!--consultar clases-->
-            <div class="col-lg-12 row d-flex consultarclases">
-              <h3 class="datos">Consultar clases</h3>
 
             </div>
             <div class="col-lg-12 row d-flex consultarclases">
