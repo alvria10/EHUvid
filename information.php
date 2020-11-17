@@ -1,12 +1,9 @@
 <?php session_start();
     include 'conexion.php';
     $conn = OpenCon();
-    #echo "Connected Successfully <hr>";
     $ldap = $_SESSION['ldap'];
-    #echo $ldap;
     $row = mysqli_query($conn,"SELECT estado, nombre, apellidos FROM usuarios WHERE ldap='$ldap'");
     $consulta=mysqli_fetch_array($row);
-    #echo "<br>";
     if($row!=null){
         $estado = $consulta[0] ?? 'default value';
         $nombre = $consulta[1] ?? 'default value';
@@ -17,7 +14,54 @@
         echo "MAL ";
     }
 
+    $row = mysqli_query($conn,"SELECT mensaje, C.nombre FROM notificacionfecha as A NATURAL JOIN usuarioyasignatura as B INNER JOIN asignatura as C ON B.codigoasignatura = C.codigo WHERE ldap = '$ldap' AND YEARWEEK(fecha,1)=YEARWEEK(NOW(),1)");
+    //$consulta = mysqli_fetch_array($row);
 
+    $hayResultados = true;
+
+    while($hayResultados == true){
+        $fila = mysqli_fetch_array($row);
+        if ($fila){
+            $notificaciones = $notificaciones . $fila[0] . " (" . $fila[1] . ")" . "<hr/>";
+        }else{
+            $hayResultados = false;
+        }
+    }
+ /*
+    if(isset($_POST['buscar_cli'])){
+        $persona = new usuario();
+        $valor = $persona->buscarCliente($_POST['buscar_cli']);
+    }
+
+    public function buscarCliente($ced){
+
+        $buscar = "SELECT COUNT(*) FROM registro_clientes WHERE rc_cedu=:a";
+        $resultado = $this->db_conexion->prepare($buscar);
+        $resultado->execute(array(':a'=>$ced));
+
+        $filas = $resultado->fetchColumn();
+
+        if($filas>0){
+
+            $extraer = "SELECT rc_cedu,rc_nomb,rc_aped,rc_telf,rc_dire FROM registro_clientes WHERE rc_cedu=:a";
+            $resultado2 = $this->db_conexion->prepare($extraer);
+            $resultado2->execute(array(':a'=>$ced));
+
+            $arrResultado["datos"][] = $resultado2->fetch(PDO::FETCH_ASSOC);
+
+            $resultado2->closeCursor();
+        }else{
+            $arrResultado=array("error"=>"No se encontraron datos");
+        }
+
+        $resultado->closeCursor();
+        $this->db_conexion = null;
+
+            header('Content-Type: application/json');
+            echo json_encode($arrResultado);
+
+     }
+    */
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +90,7 @@
         <script src="https://use.fontawesome.com/aaa4b89a6a.js"></script>
         <script src="js/misjs/calendar.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../js/jquery-2.2.4.js"></script>
 
 
     </head>
@@ -77,7 +122,7 @@
           <!--estado-->
           <div class="col-lg-5 row d-flex  justify-content-center informacion">
             <div class="col-lg-12 row d-flex estado">
-              <h3 class="datos">Estado: </h3>
+              <h3 class="datos">Estado:  </h3>
               <h3 class="datos"><?php echo $estado; ?></h3>
 
             </div>
@@ -94,7 +139,7 @@
 
              <!--notificaciones-->
             <div class="col-lg-9 row d-flex align-items-center  justify-content-center notificaciones">
-              <h3 class="datos">Koldo ha cancelado sus clases</h3>
+              <h3 class="datos" style="text-align:center;"><?php echo $notificaciones; ?></h3>
 
             </div>
 
@@ -204,27 +249,24 @@
                              dia = celda.textContent;
 
                              //Para que aparezca la ventana emergente con el horario
-                            $(".emergente" + semana).attr("data-toggle" , "modal");
-                            $(".emergente" + semana).attr("data-target" , "#exampleModal");
+                             $(".emergente" + semana).attr("data-toggle" , "modal");
+                             $(".emergente" + semana).attr("data-target" , "#exampleModal");
+                             div = document.getElementById('horario');
+                             div.classList.add('d-flex', 'align-items-center', 'justify-content-center');
+                             div.innerHTML = "";
 
-                            div = document.getElementById('horario');
-                            div.classList.add('d-flex', 'align-items-center', 'justify-content-center');
-                            div.innerHTML = "";
-
-
-
-                            //lunes
-                            if(diaSemana == 0){
-                              document.getElementById("horario").innerHTML = "<div> 13:00 - 15:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 15:00 - 17:00 &nbsp;  TIA &nbsp; ONLINE</div>";
-                            }
-							              //martes
-              							if(diaSemana == 1){
-                              document.getElementById("horario").innerHTML = "<div> 15:00 - 17:00 &nbsp;  AS &nbsp;  PRESENCIAL &nbsp; <br> 17:00 - 19:00 &nbsp;  PLCs &nbsp; ONLINE</div>";
-                            }
-							              //miercoles
-							              if(diaSemana == 2){
-                              document.getElementById("horario").innerHTML = "<div> 14:00 - 16:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 16:00 - 18:00 &nbsp;  PLCs &nbsp; PRESENCIAL &nbsp; <br> 18:00 - 20:00 &nbsp;  AS &nbsp; ONLINE</div>";
-                            }
+                             //lunes
+                             if(diaSemana == 0){
+                                document.getElementById("horario").innerHTML = "<div> 13:00 - 15:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 15:00 - 17:00 &nbsp;  TIA &nbsp; ONLINE</div>";
+                             }
+							 //martes
+							 if(diaSemana == 1){
+                                document.getElementById("horario").innerHTML = "<div> 15:00 - 17:00 &nbsp;  AS &nbsp;  PRESENCIAL &nbsp; <br> 17:00 - 19:00 &nbsp;  PLCs &nbsp; ONLINE</div>";
+                             }
+							 //miercoles
+							 if(diaSemana == 2){
+                                document.getElementById("horario").innerHTML = "<div> 14:00 - 16:00 &nbsp;  API &nbsp;  PRESENCIAL &nbsp; <br> 16:00 - 18:00 &nbsp;  PLCs &nbsp; PRESENCIAL &nbsp; <br> 18:00 - 20:00 &nbsp;  AS &nbsp; ONLINE</div>";
+                             }
                           }
                       }
                   }
