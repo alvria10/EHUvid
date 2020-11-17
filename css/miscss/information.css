@@ -46,9 +46,24 @@ Extra (xl) large devices (large desktops, 1200px and up)
 
 }
 
+.button {
+
+
+  height: 46px;
+  padding: 0 16px;
+  border: 2px solid #ddd;
+  background: linear-gradient(to right, #070707 0%,#070707 100%); 
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Rubik', sans-serif;
+}
 .boton{
   position: absolute;
-  top: 0%;
+  top: 3%;
+  right: 5%;
+  background-color: aliceblue;
 }
 
 /*Div Principal*/

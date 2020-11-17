@@ -100,13 +100,6 @@
 
 
       <!--div principal-->
-
-	  <!--Cerrar sesion-->
-	  <div style='text-align:right'>
-		<br>
-		<button class="button boton"><a href="logout.php">Cerrar Sesión</a></button>
-	  </div>
-
       <div class="principal row d-flex ">
 
         <!--Nombre y apellidos-->
@@ -189,6 +182,13 @@
            
           </div>
         </div>
+      </div>
+
+      <!--Boton cerrar sesión-->
+      <div class= "boton">
+        <button class="button ">Cerrar Sesión</button>
+      </div>
+      
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
