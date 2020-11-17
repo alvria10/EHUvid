@@ -3,28 +3,6 @@
     $conn = OpenCon();
 
 
-    $row = mysqli_query($conn,"SELECT nombre FROM asignatura");
-
-    $hayResultados = true;
-    $botones = "";
-    $nombreasignatura = "";
-    while($hayResultados == true){
-        $fila = mysqli_fetch_array($row);
-        if ($fila){
-            $nombreasignatura = $fila[0];
-            $botones = $botones .
-            '<div>
-                <form class="formulario" action="admin.php" method="post">
-                    <button class="button"> <?php echo $nombreasignatura; ?><button>
-                </form>
-            </div>
-            ';
-            //$asignaturas = $asignaturas . $fila[0]"<hr/>";
-        }else{
-            $hayResultados = false;
-        }
-    }
-
 
 ?>
 
@@ -76,16 +54,59 @@
           </h1>
         </div>
 
+        <!--Cerrar sesion-->
+        	  <div style='text-align:left'>
+        		<button class="button "><a href="registro.php">Añadir nuevo usuario</a></button>
+        	  </div>
 
-         <!--Zona alumnado-->
+    <div class="col-lg-12 row d-flex align-items-center justify-content-center alumnado">
+              <!--estado-->
+              <div class="col-lg-5 row d-flex  justify-content-center informacion">
+                <div class="col-lg-12 row d-flex estado">
+                  <h3 class="datos">Listado de clases: </h3>
+                </div>
+              </div>
+    </div>
         <div class="col-lg-12 row d-flex align-items-center justify-content-center alumnado">
              <!--asignaturas-->
             <div class="col-lg-9 row d-flex align-items-center  justify-content-center notificaciones">
-              <?php echo $botones; ?>
+              <?php
+               $row = mysqli_query($conn,"SELECT * FROM asignatura");
+               $hayResultados = true;
+               $listafrases = "";
+               while($hayResultados == true){
+                       $fila = mysqli_fetch_array($row);
+                       if ($fila){
+                           $nombre = $fila[0];
+                           $codigo = $fila[1];
+                           $estado = $fila[2];
+                           $aula = $fila[3];
+                           $frase = $nombre . " | " . $codigo . " | " . $estado . " | " . $aula . "<br>";
+                           echo '<div>';
+                           echo '<form method=post action="">';
+                           echo '<input type="hidden" name="codigo" value="' . $codigo . '">';
+                           echo $frase;
+                           echo '<button type="submit" name="action" value="add_to_cart">Detalles</button>';
+                           echo '</div>';
+                           echo '<hr>';
+                       }else{
+                           $hayResultados = false;
+                       }
+                   }
+               ?>
             </div>
         </div>
 
         <!--===============================================================================================-->
         <!--===============================================================================================-->
+
+        <?php
+            if($_POST){
+                $codigo = $_POST['codigo'];
+                $_SESSION['codigo'] = $codigo;
+                header('Location: clase.php');
+                exit();
+            }
+        ?>
     </body>
 </html>

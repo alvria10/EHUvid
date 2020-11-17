@@ -108,16 +108,17 @@
           if($check_ldap==0){
             echo ' <script language="javascript">alert("El ldap no está asociado a ninguna cuenta.");</script> ';
           }else{
-            if($contrasena_str!=$contrasena){
-              echo ' <script language="javascript">alert("La contraseña es incorrecta."); </script> ';
-            }else{
-              if ($ldap == '111111'){
-                header('Location: admin.php');
-              } else {
-                header('Location: information.php');
-              }
-              exit();
-            }
+             if(password_verify($contrasena, $contrasena_str)){
+                if ($ldap == '000000'){
+                    header('Location: admin.php');
+                } else {
+                   header('Location: information.php');
+                }
+                exit();
+
+             }else{
+                echo ' <script language="javascript">alert("La contraseña es incorrecta."); </script> ';
+             }
           }
         }
       ?>
