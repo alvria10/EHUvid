@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2020 a las 17:35:04
--- Versión del servidor: 10.1.31-MariaDB
--- Versión de PHP: 7.2.3
+-- Tiempo de generación: 17-11-2020 a las 22:41:36
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -35,6 +34,14 @@ CREATE TABLE `asignatura` (
   `aula` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `asignatura`
+--
+
+INSERT INTO `asignatura` (`nombre`, `codigo`, `estado`, `aula`) VALUES
+('Técnicas de Inteligencia artificial', 1, 'Presencial', 'P3I10A'),
+('Análisis y Diseño de Sistemas de Información', 2, 'Online', 'P2I5A');
+
 -- --------------------------------------------------------
 
 --
@@ -43,8 +50,7 @@ CREATE TABLE `asignatura` (
 
 CREATE TABLE `horaydia` (
   `dia` date NOT NULL,
-  `horaInicio` time NOT NULL,
-  `horaFin` time NOT NULL,
+  `hora` time NOT NULL,
   `codigoasignatura` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -61,6 +67,15 @@ CREATE TABLE `notificacionfecha` (
   `mensaje` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `notificacionfecha`
+--
+
+INSERT INTO `notificacionfecha` (`ldapprofesor`, `fecha`, `codigoasignatura`, `mensaje`) VALUES
+('456789', '2020-11-15', 1, 'No habrá laboratorio el jueves.'),
+('456789', '2020-11-16', 1, 'No habrá laboratorio este martes.'),
+('123456', '2020-11-17', 2, 'Exámen parcial el jueves a las 9:00 (llevar DNI o carnet universitario)');
+
 -- --------------------------------------------------------
 
 --
@@ -69,7 +84,7 @@ CREATE TABLE `notificacionfecha` (
 
 CREATE TABLE `usuarios` (
   `ldap` varchar(20) NOT NULL,
-  `contrasena` varchar(20) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
   `estado` varchar(15) NOT NULL,
   `nombre` varchar(15) NOT NULL,
   `apellidos` varchar(30) NOT NULL
@@ -80,7 +95,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ldap`, `contrasena`, `estado`, `nombre`, `apellidos`) VALUES
-('700497', '1234', 'negativo', 'diego', 'vesga');
+('000000', '$2y$10$aB8HI0ixZJEj2/Rf0WfID.Cd3ZirgwnIl.6.bArbaE/wpy0aHaRQu', 'negativo', 'admin', 'admin'),
+('881654', '123456789', 'positivo', 'Asier', 'Oyanguren Uriarte'),
+('881655', '$2y$10$cMbKeqMnOxkxw', '', 'Jon', 'Lahuerta Martínez'),
+('881656', '$2y$10$wqTKsvaPyfrxT', '', 'Pedro', 'De la Rosa Martín'),
+('889977', '$2y$10$/aCtS8z8my27Fe4KDPfl/uDEfdN6lm.IT65MIYTJ2cGvlV4U.UOYe', 'negativo', 'Antonio', 'Puertas Uriarte');
 
 -- --------------------------------------------------------
 
@@ -92,6 +111,15 @@ CREATE TABLE `usuarioyasignatura` (
   `ldap` varchar(30) NOT NULL,
   `codigoasignatura` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarioyasignatura`
+--
+
+INSERT INTO `usuarioyasignatura` (`ldap`, `codigoasignatura`) VALUES
+('881564', 2),
+('881654', 1),
+('881654', 2);
 
 --
 -- Índices para tablas volcadas
@@ -107,7 +135,7 @@ ALTER TABLE `asignatura`
 -- Indices de la tabla `horaydia`
 --
 ALTER TABLE `horaydia`
-  ADD PRIMARY KEY (`dia`,`horaInicio`,`codigoasignatura`);
+  ADD PRIMARY KEY (`dia`,`hora`,`codigoasignatura`);
 
 --
 -- Indices de la tabla `usuarios`
