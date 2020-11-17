@@ -46,11 +46,32 @@ Extra (xl) large devices (large desktops, 1200px and up)
 
 }
 
+.button {
+
+
+  height: 46px;
+  padding: 0 16px;
+  border: 2px solid #ddd;
+  background: linear-gradient(to right, #070707 0%,#070707 100%); 
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Rubik', sans-serif;
+}
+.boton{
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  background-color: aliceblue;
+}
+
 /*Div Principal*/
 body{
-    height: 100vh;
-    overflow: scroll;
-    overflow-x: hidden;
+    
+  height: 100vh;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .fondo{
@@ -60,16 +81,7 @@ body{
 
 }
 
-.image{
-  width: 100vh;
-  height: 90vh;
-  position: absolute;
-  right: 10%;
-  bottom: 5%;
 
-
-
-}
 
 .principal{
   height: 100%;
@@ -77,13 +89,13 @@ body{
 }
 
 .nombre{
-  margin-left: 5%;
+  margin-left: 0%;
 }
 
 /*Zona alumnado*/
 
 .alumnado{
-  margin-left: 5%;
+  margin-left: 0%;
 
 }
 /*Estado*/
@@ -93,9 +105,10 @@ body{
 /*Notificaciones*/
 
 .notificaciones{
+  margin-left: -1%;
   margin-top: 3%;
-  height:55vh;
   border-color: gray;
   border-width: 1px;
   border-style: solid;
 }
+
