@@ -11,7 +11,9 @@ body{
     margin-top: 5%;
   }
   
-
+.nuevoUsuario{
+    color: black;
+}
 
 .button {
 
@@ -31,7 +33,7 @@ body{
     position: absolute;
     top: 3%;
     right: 5%;
-    background-color: aliceblue;
+    background-color: white;
 }
 
 .panelPrincipal{
@@ -45,4 +47,8 @@ body{
     width: 100%;
     margin-left: 5%;
     margin-top: -10%;
+}
+
+a:link, a:visited, a:active {
+    text-decoration:none;
 }
