@@ -186,7 +186,9 @@
 
       <!--Boton cerrar sesión-->
       <div class= "boton">
-        <button class="button ">Cerrar Sesión</button>
+        <a href="index.php">
+          <button class="button " href="index.php">Cerrar Sesión</button>
+        </a>
       </div>
       
 

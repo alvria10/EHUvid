@@ -44,7 +44,9 @@
 
 	  <!--Cerrar sesion-->
       <div class= "boton">
+        <a href="index.php">
           <button class="button ">Cerrar Sesión</button>
+        </a>
       </div>
 
 
