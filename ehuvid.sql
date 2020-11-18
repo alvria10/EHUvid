@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2020 a las 22:41:36
+-- Tiempo de generación: 18-11-2020 a las 03:48:19
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -40,7 +40,9 @@ CREATE TABLE `asignatura` (
 
 INSERT INTO `asignatura` (`nombre`, `codigo`, `estado`, `aula`) VALUES
 ('Técnicas de Inteligencia artificial', 1, 'Presencial', 'P3I10A'),
-('Análisis y Diseño de Sistemas de Información', 2, 'Online', 'P2I5A');
+('Análisis y Diseño de Sistemas de Información', 2, 'Online', 'P2I5A'),
+('Aspectos Profesionales de la Informática', 3, 'Online', 'P3I10A'),
+('Minería de Datos', 4, 'Presencial', 'P4M5A');
 
 -- --------------------------------------------------------
 
@@ -74,7 +76,9 @@ CREATE TABLE `notificacionfecha` (
 INSERT INTO `notificacionfecha` (`ldapprofesor`, `fecha`, `codigoasignatura`, `mensaje`) VALUES
 ('456789', '2020-11-15', 1, 'No habrá laboratorio el jueves.'),
 ('456789', '2020-11-16', 1, 'No habrá laboratorio este martes.'),
-('123456', '2020-11-17', 2, 'Exámen parcial el jueves a las 9:00 (llevar DNI o carnet universitario)');
+('123456', '2020-11-17', 2, 'Exámen parcial el jueves a las 9:00 (llevar DNI o carnet universitario)'),
+('667755', '2020-11-17', 3, 'Retraso en la clase del miércoles'),
+('772255', '2020-11-09', 4, 'Suspendida la práctica de esta semana');
 
 -- --------------------------------------------------------
 
@@ -95,11 +99,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ldap`, `contrasena`, `estado`, `nombre`, `apellidos`) VALUES
+('', '$2y$10$dRLvbXQPuTn575ZLYQACheDdtX5rHPiNQX8VTvoYgDQrDwkUs1nbK', 'negativo', '', ''),
 ('000000', '$2y$10$aB8HI0ixZJEj2/Rf0WfID.Cd3ZirgwnIl.6.bArbaE/wpy0aHaRQu', 'negativo', 'admin', 'admin'),
-('881654', '123456789', 'positivo', 'Asier', 'Oyanguren Uriarte'),
-('881655', '$2y$10$cMbKeqMnOxkxw', '', 'Jon', 'Lahuerta Martínez'),
-('881656', '$2y$10$wqTKsvaPyfrxT', '', 'Pedro', 'De la Rosa Martín'),
-('889977', '$2y$10$/aCtS8z8my27Fe4KDPfl/uDEfdN6lm.IT65MIYTJ2cGvlV4U.UOYe', 'negativo', 'Antonio', 'Puertas Uriarte');
+('833705', '$2y$10$bKfH9m0BQMKJNP8lZU9dTeKJtRzImharEzdb8c8zId076rSWmQZNO', 'negativo', 'Víctor', 'Núñez González'),
+('889977', '$2y$10$/aCtS8z8my27Fe4KDPfl/uDEfdN6lm.IT65MIYTJ2cGvlV4U.UOYe', 'negativo', 'Antonio', 'Puertas Uriarte'),
+('999999', '$2y$10$NOayCUQkx34Oh/lFqvWAkuEtKNbnLazgA31KwRDCAwnEQAIYXJSRy', 'positivo', 'Mikel', 'Etxebarria García');
 
 -- --------------------------------------------------------
 
@@ -117,9 +121,13 @@ CREATE TABLE `usuarioyasignatura` (
 --
 
 INSERT INTO `usuarioyasignatura` (`ldap`, `codigoasignatura`) VALUES
-('881564', 2),
-('881654', 1),
-('881654', 2);
+('833705', 1),
+('833705', 2),
+('833705', 3),
+('889977', 3),
+('889977', 4),
+('999999', 1),
+('999999', 4);
 
 --
 -- Índices para tablas volcadas
