@@ -1,9 +1,12 @@
 <?php session_start();
     include 'conexion.php';
     $conn = OpenCon();
-
-
-
+    if($_POST){
+       $codigo = $_POST['codigo'];
+       $_SESSION['codigo'] = $codigo;
+       header('Location: clase.php');
+       exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +66,9 @@
 
             <!--Anadir usuario-->
             <div class="col-lg-12 row d-flex ">
-                <button class="button "><a href="registro.php">Añadir nuevo usuario</a></button>
+                <a href="registro.php">
+                    <button class="button ">Añadir nuevo usuario</button>
+                </a>
             </div>
         </div>
 
@@ -82,32 +87,39 @@
                     <!--asignaturas-->
                     <div class="col-lg-9 row d-flex align-items-center  justify-content-center notificaciones">
                       <?php
-                      $row = mysqli_query($conn,"SELECT * FROM asignatura");
-                      $hayResultados = true;
-                      $listafrases = "";
-                      while($hayResultados == true){
+                       $row = mysqli_query($conn,"SELECT * FROM asignatura");
+                       $hayResultados = true;
+                       $listafrases = "";
+                       while($hayResultados == true){
                               $fila = mysqli_fetch_array($row);
-                              if ($fila){
-                                  $nombre = $fila[0];
-                                  $codigo = $fila[1];
-                                  $estado = $fila[2];
-                                  $aula = $fila[3];
-                                  $frase = $nombre . " | " . $codigo . " | " . $estado . " | " . $aula . "<br>";
-                                  echo '<div>';
-                                  echo '<form method=post action="">';
-                                  echo '<input type="hidden" name="codigo" value="' . $codigo . '">';
-                                  echo $frase;
-                                  echo '<button type="submit" name="action" value="add_to_cart">Detalles</button>';
-                                  echo '</div>';
+                           if ($fila){
+                               $nombre = $fila[0];
+                               $codigo = $fila[1];
+                               $estado = $fila[2];
+                               $aula = $fila[3];
+                               $frase = $nombre . " | " . $codigo . " | " . $estado . " | " . $aula . "<br>";
+                               echo '<div>';
+                               echo '<form method=post action="">';
+                               echo '<input type="hidden" name="codigo" value="' . $codigo . '">';
+                               if ($estado == 'Online'){
+                                  echo '<font color="red">';
+                               } else {
+                                  echo '<font color="green">';
+                               }
+                               echo $frase;
+                               echo '</font>';
+                               echo '<button type="submit" name="action" value="add_to_cart">Detalles</button>';
+                               echo '</form>';
+                               echo '</div>';
                                   echo '<hr>';
-                              }else{
-                                  $hayResultados = false;
-                              }
-                          }
+                           }else{
+                              $hayResultados = false;
+                           }
+                       }
                       ?>
                     </div>
-                </div>          
-            </div>             
+                </div>
+            </div>
       </div>
 
 
@@ -115,13 +127,5 @@
         <!--===============================================================================================-->
         <!--===============================================================================================-->
 
-        <?php
-            if($_POST){
-                $codigo = $_POST['codigo'];
-                $_SESSION['codigo'] = $codigo;
-                header('Location: clase.php');
-                exit();
-            }
-        ?>
     </body>
 </html>

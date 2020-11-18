@@ -42,7 +42,9 @@
 
 	  <!--Volver-->
 	  <div style='text-align:right'>
-		<button class="button "><a href="admin.php">Volver</a></button>
+		<a href="admin.php">
+          <button class="button ">Volver</button>
+        </a>
 	  </div>
 
 	  <div class="col-lg-12 divform d-flex align-items-center justify-content-center">
@@ -52,7 +54,7 @@
               <input type="text" class="form-field " placeholder="LDAP" name="ldap" id="ldap">
               <input type="password" class="form-field " placeholder="Contraseña" name="contrasena" id="contrasena">
               <input type="password" class="form-field " placeholder="Repetir Contraseña" name="repetircontrasena" id="repetircontrasena">
-              <button class="button ">LOGIN</button>
+              <button class="button ">Añadir</button>
           </form>
        </div>
 

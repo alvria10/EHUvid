@@ -42,7 +42,9 @@
 
 	  <!--Volver-->
 	  <div style='text-align:right'>
-		<button class="button "><a href="admin.php">Volver</a></button>
+	    <a href="admin.php">
+		  <button class="button ">Volver</button>
+		</a>
 	  </div>
 
 	  <!--Zona alumnado-->
@@ -55,23 +57,23 @@
                      $hayResultados = true;
                      $listafrases = "";
                      while($hayResultados == true){
-                             $fila = mysqli_fetch_array($row);
-                             if ($fila){
-                                 $nombre = $fila[1];
-                                 $ldap = $fila[0];
-                                 $estado = $fila[3];
-                                 $apellidos = $fila[2];
-                                 $frase = $nombre . " " . $apellidos . " | " . $ldap . " | " . $estado . "<br>";
-                                 echo '<div>';
-                                 if ($estado == 'positivo'){
-                                    echo '<font color="red">';
-                                 } else {
-                                    echo '<font color="green">';
-                                 }
-                                 echo $frase;
-                                 echo '</font>';
-                                 echo '</div>';
-                                 echo '<hr>';
+                        $fila = mysqli_fetch_array($row);
+                        if ($fila){
+                           $nombre = $fila[1];
+                           $ldap = $fila[0];
+                           $estado = $fila[3];
+                           $apellidos = $fila[2];
+                           $frase = $nombre . " " . $apellidos . " | " . $ldap . " | " . $estado . "<br>";
+                           echo '<div>';
+                           if ($estado == 'positivo'){
+                              echo '<font color="red">';
+                           } else {
+                              echo '<font color="green">';
+                           }
+                              echo $frase;
+                              echo '</font>';
+                              echo '</div>';
+                              echo '<hr>';
                              }else{
                                  $hayResultados = false;
                              }
